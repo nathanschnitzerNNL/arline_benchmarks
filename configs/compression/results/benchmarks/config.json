@@ -1,0 +1,2098 @@
+{
+  "latex": {
+    "all_metrics": [
+      {
+        "fig_name": "depth",
+        "name": "Depth"
+      },
+      {
+        "fig_name": "total_gate_count",
+        "name": "Total Gate Count"
+      },
+      {
+        "fig_name": "single_qubit_gate_count",
+        "name": "Single-Qubit Gate Count"
+      },
+      {
+        "fig_name": "two_qubit_gate_count",
+        "name": "Two-Qubit Gate Count"
+      },
+      {
+        "fig_name": "single_qubit_gate_depth",
+        "name": "Single-Qubit Gate Depth"
+      },
+      {
+        "fig_name": "two_qubit_gate_depth",
+        "name": "Two-Qubit Gate Depth"
+      },
+      {
+        "fig_name": "circuit_cost_function",
+        "name": "Circuit Cost Function"
+      },
+      {
+        "fig_name": "execution_time",
+        "name": "Execution Time"
+      }
+    ],
+    "circuit_metrics": [
+      {
+        "fig_name": "circuit_cost_function",
+        "name": "Circuit Cost Function"
+      }
+    ],
+    "compression_radar_with_cost": false,
+    "fig_format": "pdf",
+    "final_stage": "mapping_compression",
+    "gate_metrics": [
+      {
+        "fig_name": "depth",
+        "name": "Depth"
+      },
+      {
+        "fig_name": "total_gate_count",
+        "name": "Total Gate Count"
+      },
+      {
+        "fig_name": "single_qubit_gate_count",
+        "name": "Single-Qubit Gate Count"
+      },
+      {
+        "fig_name": "two_qubit_gate_count",
+        "name": "Two-Qubit Gate Count"
+      },
+      {
+        "fig_name": "single_qubit_gate_depth",
+        "name": "Single-Qubit Gate Depth"
+      },
+      {
+        "fig_name": "two_qubit_gate_depth",
+        "name": "Two-Qubit Gate Depth"
+      }
+    ],
+    "initial_stage": "target_analysis",
+    "scatter_fig_list": [
+      "total_gate_count_vs_depth",
+      "two_qubit_gate_count_vs_depth",
+      "two_qubit_gate_count_vs_single_qubit_gate_count",
+      "total_execution_time_vs_total_gate_count",
+      "single_qubit_gate_depth_vs_single_qubit_gate_count",
+      "two_qubit_gate_depth_vs_two_qubit_gate_count"
+    ],
+    "time_metrics": [
+      {
+        "fig_name": "execution_time",
+        "name": "Execution Time"
+      }
+    ]
+  },
+  "pipelines": [
+    {
+      "id": "QiskitPl",
+      "stages": [
+        {
+          "args": {},
+          "id": "target_analysis",
+          "strategy": "target_analysis"
+        },
+        {
+          "args": {
+            "hardware": {
+              "args": {
+                "num_qubits": 2
+              },
+              "class": "IbmAll2All"
+            }
+          },
+          "id": "mapping_compression",
+          "strategy": "qiskit_transpile"
+        }
+      ],
+      "target": {
+        "algo": "random_chain",
+        "chain_length": 120,
+        "gate_distribution": "uniform",
+        "hardware": {
+          "args": {
+            "num_qubits": 2
+          },
+          "class": "CliffordTAll2All"
+        },
+        "name": "random_chain_clifford_t_2q_120",
+        "number": 10,
+        "seed": 10,
+        "task": "circuit_transformation"
+      },
+      "test_type": "kak"
+    },
+    {
+      "id": "CirqPl",
+      "stages": [
+        {
+          "args": {},
+          "id": "target_analysis",
+          "strategy": "target_analysis"
+        },
+        {
+          "args": {
+            "hardware": {
+              "args": {
+                "num_qubits": 2
+              },
+              "class": "IbmAll2All"
+            }
+          },
+          "id": "mapping_compression",
+          "strategy": "cirq_mapping_compression"
+        }
+      ],
+      "target": {
+        "algo": "random_chain",
+        "chain_length": 120,
+        "gate_distribution": "uniform",
+        "hardware": {
+          "args": {
+            "num_qubits": 2
+          },
+          "class": "CliffordTAll2All"
+        },
+        "name": "random_chain_clifford_t_2q_120",
+        "number": 10,
+        "seed": 10,
+        "task": "circuit_transformation"
+      },
+      "test_type": "kak"
+    },
+    {
+      "id": "QiskitPl",
+      "stages": [
+        {
+          "args": {},
+          "id": "target_analysis",
+          "strategy": "target_analysis"
+        },
+        {
+          "args": {
+            "hardware": {
+              "args": {
+                "num_qubits": 2
+              },
+              "class": "IbmAll2All"
+            }
+          },
+          "id": "mapping_compression",
+          "strategy": "qiskit_transpile"
+        }
+      ],
+      "target": {
+        "algo": "random_chain",
+        "chain_length": 120,
+        "gate_distribution": "uniform",
+        "hardware": {
+          "gate_set": [
+            "U3",
+            "Cnot"
+          ],
+          "num_qubits": 2
+        },
+        "name": "random_chain_cnot_u3_2q_120",
+        "number": 10,
+        "seed": 10,
+        "task": "circuit_transformation"
+      },
+      "test_type": "kak"
+    },
+    {
+      "id": "CirqPl",
+      "stages": [
+        {
+          "args": {},
+          "id": "target_analysis",
+          "strategy": "target_analysis"
+        },
+        {
+          "args": {
+            "hardware": {
+              "args": {
+                "num_qubits": 2
+              },
+              "class": "IbmAll2All"
+            }
+          },
+          "id": "mapping_compression",
+          "strategy": "cirq_mapping_compression"
+        }
+      ],
+      "target": {
+        "algo": "random_chain",
+        "chain_length": 120,
+        "gate_distribution": "uniform",
+        "hardware": {
+          "gate_set": [
+            "U3",
+            "Cnot"
+          ],
+          "num_qubits": 2
+        },
+        "name": "random_chain_cnot_u3_2q_120",
+        "number": 10,
+        "seed": 10,
+        "task": "circuit_transformation"
+      },
+      "test_type": "kak"
+    },
+    {
+      "id": "QiskitPl",
+      "stages": [
+        {
+          "args": {},
+          "id": "target_analysis",
+          "strategy": "target_analysis"
+        },
+        {
+          "args": {
+            "hardware": {
+              "args": {
+                "num_qubits": 16
+              },
+              "class": "IbmAll2All"
+            }
+          },
+          "id": "mapping_compression",
+          "strategy": "qiskit_transpile"
+        }
+      ],
+      "target": {
+        "algo": "random_chain",
+        "chain_length": 120,
+        "gate_distribution": "uniform",
+        "hardware": {
+          "args": {
+            "num_qubits": 16
+          },
+          "class": "CliffordTAll2All"
+        },
+        "name": "random_chain_clifford_t_16q_120",
+        "number": 10,
+        "seed": 10,
+        "task": "circuit_transformation"
+      },
+      "test_type": "multiqubit"
+    },
+    {
+      "id": "CirqPl",
+      "stages": [
+        {
+          "args": {},
+          "id": "target_analysis",
+          "strategy": "target_analysis"
+        },
+        {
+          "args": {
+            "hardware": {
+              "args": {
+                "num_qubits": 16
+              },
+              "class": "IbmAll2All"
+            }
+          },
+          "id": "mapping_compression",
+          "strategy": "cirq_mapping_compression"
+        }
+      ],
+      "target": {
+        "algo": "random_chain",
+        "chain_length": 120,
+        "gate_distribution": "uniform",
+        "hardware": {
+          "args": {
+            "num_qubits": 16
+          },
+          "class": "CliffordTAll2All"
+        },
+        "name": "random_chain_clifford_t_16q_120",
+        "number": 10,
+        "seed": 10,
+        "task": "circuit_transformation"
+      },
+      "test_type": "multiqubit"
+    },
+    {
+      "id": "QiskitPl",
+      "stages": [
+        {
+          "args": {},
+          "id": "target_analysis",
+          "strategy": "target_analysis"
+        },
+        {
+          "args": {
+            "hardware": {
+              "args": {
+                "num_qubits": 16
+              },
+              "class": "IbmAll2All"
+            }
+          },
+          "id": "mapping_compression",
+          "strategy": "qiskit_transpile"
+        }
+      ],
+      "target": {
+        "algo": "random_chain",
+        "chain_length": 120,
+        "gate_distribution": "uniform",
+        "hardware": {
+          "gate_set": [
+            "U3",
+            "Cnot"
+          ],
+          "num_qubits": 16
+        },
+        "name": "random_chain_cnot_u3_16q_120",
+        "number": 10,
+        "seed": 10,
+        "task": "circuit_transformation"
+      },
+      "test_type": "multiqubit"
+    },
+    {
+      "id": "CirqPl",
+      "stages": [
+        {
+          "args": {},
+          "id": "target_analysis",
+          "strategy": "target_analysis"
+        },
+        {
+          "args": {
+            "hardware": {
+              "args": {
+                "num_qubits": 16
+              },
+              "class": "IbmAll2All"
+            }
+          },
+          "id": "mapping_compression",
+          "strategy": "cirq_mapping_compression"
+        }
+      ],
+      "target": {
+        "algo": "random_chain",
+        "chain_length": 120,
+        "gate_distribution": "uniform",
+        "hardware": {
+          "gate_set": [
+            "U3",
+            "Cnot"
+          ],
+          "num_qubits": 16
+        },
+        "name": "random_chain_cnot_u3_16q_120",
+        "number": 10,
+        "seed": 10,
+        "task": "circuit_transformation"
+      },
+      "test_type": "multiqubit"
+    },
+    {
+      "id": "QiskitPl",
+      "stages": [
+        {
+          "args": {},
+          "id": "target_analysis",
+          "strategy": "target_analysis"
+        },
+        {
+          "args": {
+            "hardware": {
+              "args": {
+                "num_qubits": 16
+              },
+              "class": "IbmAll2All"
+            }
+          },
+          "id": "mapping_compression",
+          "strategy": "qiskit_transpile"
+        }
+      ],
+      "target": {
+        "algo": "qasm",
+        "name": "math_qasm_circuits",
+        "number": null,
+        "qasm_path": [
+          "$ARLINE_BENCHMARKS/circuits/rd53_135.qasm",
+          "$ARLINE_BENCHMARKS/circuits/mini-alu_167.qasm",
+          "$ARLINE_BENCHMARKS/circuits/C17_204.qasm",
+          "$ARLINE_BENCHMARKS/circuits/sym9_146.qasm",
+          "$ARLINE_BENCHMARKS/circuits/one-two-three-v0_97.qasm"
+        ],
+        "task": "circuit_transformation"
+      },
+      "test_type": "multiqubit"
+    },
+    {
+      "id": "CirqPl",
+      "stages": [
+        {
+          "args": {},
+          "id": "target_analysis",
+          "strategy": "target_analysis"
+        },
+        {
+          "args": {
+            "hardware": {
+              "args": {
+                "num_qubits": 16
+              },
+              "class": "IbmAll2All"
+            }
+          },
+          "id": "mapping_compression",
+          "strategy": "cirq_mapping_compression"
+        }
+      ],
+      "target": {
+        "algo": "qasm",
+        "name": "math_qasm_circuits",
+        "number": null,
+        "qasm_path": [
+          "$ARLINE_BENCHMARKS/circuits/rd53_135.qasm",
+          "$ARLINE_BENCHMARKS/circuits/mini-alu_167.qasm",
+          "$ARLINE_BENCHMARKS/circuits/C17_204.qasm",
+          "$ARLINE_BENCHMARKS/circuits/sym9_146.qasm",
+          "$ARLINE_BENCHMARKS/circuits/one-two-three-v0_97.qasm"
+        ],
+        "task": "circuit_transformation"
+      },
+      "test_type": "multiqubit"
+    },
+    {
+      "id": "QiskitPl",
+      "stages": [
+        {
+          "args": {},
+          "id": "target_analysis",
+          "strategy": "target_analysis"
+        },
+        {
+          "args": {
+            "hardware": {
+              "args": {},
+              "class": "IbmRueschlikonSymmetrical"
+            }
+          },
+          "id": "mapping_compression",
+          "strategy": "qiskit_transpile"
+        }
+      ],
+      "target": {
+        "algo": "random_chain",
+        "chain_length": 120,
+        "gate_distribution": "uniform",
+        "hardware": {
+          "args": {
+            "num_qubits": 16
+          },
+          "class": "CliffordTAll2All"
+        },
+        "name": "random_chain_clifford_t_16q_120",
+        "number": 10,
+        "seed": 10,
+        "task": "circuit_transformation"
+      },
+      "test_type": "multiqubit"
+    },
+    {
+      "id": "CirqPl",
+      "stages": [
+        {
+          "args": {},
+          "id": "target_analysis",
+          "strategy": "target_analysis"
+        },
+        {
+          "args": {
+            "hardware": {
+              "args": {},
+              "class": "IbmRueschlikonSymmetrical"
+            }
+          },
+          "id": "mapping_compression",
+          "strategy": "cirq_mapping_compression"
+        }
+      ],
+      "target": {
+        "algo": "random_chain",
+        "chain_length": 120,
+        "gate_distribution": "uniform",
+        "hardware": {
+          "args": {
+            "num_qubits": 16
+          },
+          "class": "CliffordTAll2All"
+        },
+        "name": "random_chain_clifford_t_16q_120",
+        "number": 10,
+        "seed": 10,
+        "task": "circuit_transformation"
+      },
+      "test_type": "multiqubit"
+    },
+    {
+      "id": "QiskitPl",
+      "stages": [
+        {
+          "args": {},
+          "id": "target_analysis",
+          "strategy": "target_analysis"
+        },
+        {
+          "args": {
+            "hardware": {
+              "args": {},
+              "class": "IbmRueschlikonSymmetrical"
+            }
+          },
+          "id": "mapping_compression",
+          "strategy": "qiskit_transpile"
+        }
+      ],
+      "target": {
+        "algo": "random_chain",
+        "chain_length": 120,
+        "gate_distribution": "uniform",
+        "hardware": {
+          "gate_set": [
+            "U3",
+            "Cnot"
+          ],
+          "num_qubits": 16
+        },
+        "name": "random_chain_cnot_u3_16q_120",
+        "number": 10,
+        "seed": 10,
+        "task": "circuit_transformation"
+      },
+      "test_type": "multiqubit"
+    },
+    {
+      "id": "CirqPl",
+      "stages": [
+        {
+          "args": {},
+          "id": "target_analysis",
+          "strategy": "target_analysis"
+        },
+        {
+          "args": {
+            "hardware": {
+              "args": {},
+              "class": "IbmRueschlikonSymmetrical"
+            }
+          },
+          "id": "mapping_compression",
+          "strategy": "cirq_mapping_compression"
+        }
+      ],
+      "target": {
+        "algo": "random_chain",
+        "chain_length": 120,
+        "gate_distribution": "uniform",
+        "hardware": {
+          "gate_set": [
+            "U3",
+            "Cnot"
+          ],
+          "num_qubits": 16
+        },
+        "name": "random_chain_cnot_u3_16q_120",
+        "number": 10,
+        "seed": 10,
+        "task": "circuit_transformation"
+      },
+      "test_type": "multiqubit"
+    },
+    {
+      "id": "QiskitPl",
+      "stages": [
+        {
+          "args": {},
+          "id": "target_analysis",
+          "strategy": "target_analysis"
+        },
+        {
+          "args": {
+            "hardware": {
+              "args": {},
+              "class": "IbmRueschlikonSymmetrical"
+            }
+          },
+          "id": "mapping_compression",
+          "strategy": "qiskit_transpile"
+        }
+      ],
+      "target": {
+        "algo": "qasm",
+        "name": "math_qasm_circuits",
+        "number": null,
+        "qasm_path": [
+          "$ARLINE_BENCHMARKS/circuits/rd53_135.qasm",
+          "$ARLINE_BENCHMARKS/circuits/mini-alu_167.qasm",
+          "$ARLINE_BENCHMARKS/circuits/C17_204.qasm",
+          "$ARLINE_BENCHMARKS/circuits/sym9_146.qasm",
+          "$ARLINE_BENCHMARKS/circuits/one-two-three-v0_97.qasm"
+        ],
+        "task": "circuit_transformation"
+      },
+      "test_type": "multiqubit"
+    },
+    {
+      "id": "CirqPl",
+      "stages": [
+        {
+          "args": {},
+          "id": "target_analysis",
+          "strategy": "target_analysis"
+        },
+        {
+          "args": {
+            "hardware": {
+              "args": {},
+              "class": "IbmRueschlikonSymmetrical"
+            }
+          },
+          "id": "mapping_compression",
+          "strategy": "cirq_mapping_compression"
+        }
+      ],
+      "target": {
+        "algo": "qasm",
+        "name": "math_qasm_circuits",
+        "number": null,
+        "qasm_path": [
+          "$ARLINE_BENCHMARKS/circuits/rd53_135.qasm",
+          "$ARLINE_BENCHMARKS/circuits/mini-alu_167.qasm",
+          "$ARLINE_BENCHMARKS/circuits/C17_204.qasm",
+          "$ARLINE_BENCHMARKS/circuits/sym9_146.qasm",
+          "$ARLINE_BENCHMARKS/circuits/one-two-three-v0_97.qasm"
+        ],
+        "task": "circuit_transformation"
+      },
+      "test_type": "multiqubit"
+    }
+  ],
+  "plotter": {
+    "plots": [
+      {
+        "args": {
+          "baseline": {
+            "name": "KAK",
+            "style": {
+              "color": "crimson",
+              "linestyle": "solid",
+              "linewidth": 2
+            },
+            "value": 7
+          },
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "stages_settings": {
+            "mapping_compression": {
+              "color": "teal",
+              "name": "Mapping+Compression"
+            },
+            "target_analysis": {
+              "color": "crimson",
+              "name": "Target"
+            },
+            "unroll": {
+              "color": "turquoise",
+              "name": "Unroll"
+            }
+          },
+          "y_col": "Depth",
+          "yscale": "linear"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/{Pipeline Output Hardware Name}/bars_{y_col}.pdf",
+        "fixed_conditions": {
+          "Test Type": "kak"
+        },
+        "iterative_conditions": [
+          "Pipeline Output Hardware Name",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_pipelines_comparison_bars",
+        "title": "Depth"
+      },
+      {
+        "args": {
+          "baseline": {
+            "name": "KAK",
+            "style": {
+              "color": "crimson",
+              "linestyle": "solid",
+              "linewidth": 2
+            },
+            "value": 8
+          },
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "stages_settings": {
+            "mapping_compression": {
+              "color": "teal",
+              "name": "Mapping+Compression"
+            },
+            "target_analysis": {
+              "color": "crimson",
+              "name": "Target"
+            },
+            "unroll": {
+              "color": "turquoise",
+              "name": "Unroll"
+            }
+          },
+          "y_col": "Single-Qubit Gate Count",
+          "yscale": "linear"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/{Pipeline Output Hardware Name}/bars_{y_col}.pdf",
+        "fixed_conditions": {
+          "Test Type": "kak"
+        },
+        "iterative_conditions": [
+          "Pipeline Output Hardware Name",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_pipelines_comparison_bars",
+        "title": "Single-Qubit Gate Count"
+      },
+      {
+        "args": {
+          "baseline": {
+            "name": "KAK",
+            "style": {
+              "color": "crimson",
+              "linestyle": "solid",
+              "linewidth": 2
+            },
+            "value": 3
+          },
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "stages_settings": {
+            "mapping_compression": {
+              "color": "teal",
+              "name": "Mapping+Compression"
+            },
+            "target_analysis": {
+              "color": "crimson",
+              "name": "Target"
+            },
+            "unroll": {
+              "color": "turquoise",
+              "name": "Unroll"
+            }
+          },
+          "y_col": "Two-Qubit Gate Count",
+          "yscale": "linear"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/{Pipeline Output Hardware Name}/bars_{y_col}.pdf",
+        "fixed_conditions": {
+          "Test Type": "kak"
+        },
+        "iterative_conditions": [
+          "Pipeline Output Hardware Name",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_pipelines_comparison_bars",
+        "title": "Two-Qubit Gate Count"
+      },
+      {
+        "args": {
+          "baseline": {
+            "name": "KAK",
+            "style": {
+              "color": "crimson",
+              "linestyle": "solid",
+              "linewidth": 2
+            },
+            "value": 11
+          },
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "stages_settings": {
+            "mapping_compression": {
+              "color": "teal",
+              "name": "Mapping+Compression"
+            },
+            "target_analysis": {
+              "color": "crimson",
+              "name": "Target"
+            },
+            "unroll": {
+              "color": "turquoise",
+              "name": "Unroll"
+            }
+          },
+          "y_col": "Total Gate Count",
+          "yscale": "linear"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/{Pipeline Output Hardware Name}/bars_{y_col}.pdf",
+        "fixed_conditions": {
+          "Test Type": "kak"
+        },
+        "iterative_conditions": [
+          "Pipeline Output Hardware Name",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_pipelines_comparison_bars",
+        "title": "Total Gate Count"
+      },
+      {
+        "args": {
+          "baseline": {
+            "name": "KAK",
+            "style": {
+              "color": "crimson",
+              "linestyle": "solid",
+              "linewidth": 2
+            },
+            "value": 4
+          },
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "stages_settings": {
+            "mapping_compression": {
+              "color": "teal",
+              "name": "Mapping+Compression"
+            },
+            "target_analysis": {
+              "color": "crimson",
+              "name": "Target"
+            },
+            "unroll": {
+              "color": "turquoise",
+              "name": "Unroll"
+            }
+          },
+          "y_col": "Single-Qubit Gate Depth",
+          "yscale": "linear"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/{Pipeline Output Hardware Name}/bars_{y_col}.pdf",
+        "fixed_conditions": {
+          "Test Type": "kak"
+        },
+        "iterative_conditions": [
+          "Pipeline Output Hardware Name",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_pipelines_comparison_bars",
+        "title": "Single-Qubit Gate Depth"
+      },
+      {
+        "args": {
+          "baseline": {
+            "name": "KAK",
+            "style": {
+              "color": "crimson",
+              "linestyle": "solid",
+              "linewidth": 2
+            },
+            "value": 3
+          },
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "stages_settings": {
+            "mapping_compression": {
+              "color": "teal",
+              "name": "Mapping+Compression"
+            },
+            "target_analysis": {
+              "color": "crimson",
+              "name": "Target"
+            },
+            "unroll": {
+              "color": "turquoise",
+              "name": "Unroll"
+            }
+          },
+          "y_col": "Two-Qubit Gate Depth",
+          "yscale": "linear"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/{Pipeline Output Hardware Name}/bars_{y_col}.pdf",
+        "fixed_conditions": {
+          "Test Type": "kak"
+        },
+        "iterative_conditions": [
+          "Pipeline Output Hardware Name",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_pipelines_comparison_bars",
+        "title": "Two-Qubit Gate Depth"
+      },
+      {
+        "args": {
+          "baseline": {},
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "stages_settings": {
+            "mapping_compression": {
+              "color": "teal",
+              "name": "Mapping+Compression"
+            },
+            "target_analysis": {
+              "color": "crimson",
+              "name": "Target"
+            },
+            "unroll": {
+              "color": "turquoise",
+              "name": "Unroll"
+            }
+          },
+          "y_col": "Depth",
+          "yscale": "linear"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/{Pipeline Output Hardware Name}/bars_{y_col}.pdf",
+        "fixed_conditions": {
+          "Test Type": "multiqubit"
+        },
+        "iterative_conditions": [
+          "Pipeline Output Hardware Name",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_pipelines_comparison_bars",
+        "title": "Depth"
+      },
+      {
+        "args": {
+          "baseline": {},
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "stages_settings": {
+            "mapping_compression": {
+              "color": "teal",
+              "name": "Mapping+Compression"
+            },
+            "target_analysis": {
+              "color": "crimson",
+              "name": "Target"
+            },
+            "unroll": {
+              "color": "turquoise",
+              "name": "Unroll"
+            }
+          },
+          "y_col": "Single-Qubit Gate Count",
+          "yscale": "linear"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/{Pipeline Output Hardware Name}/bars_{y_col}.pdf",
+        "fixed_conditions": {
+          "Test Type": "multiqubit"
+        },
+        "iterative_conditions": [
+          "Pipeline Output Hardware Name",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_pipelines_comparison_bars",
+        "title": "Single-Qubit Gate Count"
+      },
+      {
+        "args": {
+          "baseline": {},
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "stages_settings": {
+            "mapping_compression": {
+              "color": "teal",
+              "name": "Mapping+Compression"
+            },
+            "target_analysis": {
+              "color": "crimson",
+              "name": "Target"
+            },
+            "unroll": {
+              "color": "turquoise",
+              "name": "Unroll"
+            }
+          },
+          "y_col": "Two-Qubit Gate Count",
+          "yscale": "linear"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/{Pipeline Output Hardware Name}/bars_{y_col}.pdf",
+        "fixed_conditions": {
+          "Test Type": "multiqubit"
+        },
+        "iterative_conditions": [
+          "Pipeline Output Hardware Name",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_pipelines_comparison_bars",
+        "title": "Two-Qubit Gate Count"
+      },
+      {
+        "args": {
+          "baseline": {},
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "stages_settings": {
+            "mapping_compression": {
+              "color": "teal",
+              "name": "Mapping+Compression"
+            },
+            "target_analysis": {
+              "color": "crimson",
+              "name": "Target"
+            },
+            "unroll": {
+              "color": "turquoise",
+              "name": "Unroll"
+            }
+          },
+          "y_col": "Total Gate Count",
+          "yscale": "linear"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/{Pipeline Output Hardware Name}/bars_{y_col}.pdf",
+        "fixed_conditions": {
+          "Test Type": "multiqubit"
+        },
+        "iterative_conditions": [
+          "Pipeline Output Hardware Name",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_pipelines_comparison_bars",
+        "title": "Total Gate Count"
+      },
+      {
+        "args": {
+          "baseline": {},
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "stages_settings": {
+            "mapping_compression": {
+              "color": "teal",
+              "name": "Mapping+Compression"
+            },
+            "target_analysis": {
+              "color": "crimson",
+              "name": "Target"
+            },
+            "unroll": {
+              "color": "turquoise",
+              "name": "Unroll"
+            }
+          },
+          "y_col": "Single-Qubit Gate Depth",
+          "yscale": "linear"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/{Pipeline Output Hardware Name}/bars_{y_col}.pdf",
+        "fixed_conditions": {
+          "Test Type": "multiqubit"
+        },
+        "iterative_conditions": [
+          "Pipeline Output Hardware Name",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_pipelines_comparison_bars",
+        "title": "Single-Qubit Gate Depth"
+      },
+      {
+        "args": {
+          "baseline": {},
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "stages_settings": {
+            "mapping_compression": {
+              "color": "teal",
+              "name": "Mapping+Compression"
+            },
+            "target_analysis": {
+              "color": "crimson",
+              "name": "Target"
+            },
+            "unroll": {
+              "color": "turquoise",
+              "name": "Unroll"
+            }
+          },
+          "y_col": "Two-Qubit Gate Depth",
+          "yscale": "linear"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/{Pipeline Output Hardware Name}/bars_{y_col}.pdf",
+        "fixed_conditions": {
+          "Test Type": "multiqubit"
+        },
+        "iterative_conditions": [
+          "Pipeline Output Hardware Name",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_pipelines_comparison_bars",
+        "title": "Two-Qubit Gate Depth"
+      },
+      {
+        "args": {
+          "baseline": {},
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "stages_settings": {
+            "mapping_compression": {
+              "color": "teal",
+              "name": "Mapping+Compression"
+            },
+            "target_analysis": {
+              "color": "crimson",
+              "name": "Target"
+            },
+            "unroll": {
+              "color": "turquoise",
+              "name": "Unroll"
+            }
+          },
+          "y_col": "Circuit Cost Function",
+          "yscale": "log"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/{Pipeline Output Hardware Name}/bars_{y_col}.pdf",
+        "fixed_conditions": {},
+        "iterative_conditions": [
+          "Test Type",
+          "Pipeline Output Hardware Name",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_pipelines_comparison_bars",
+        "title": "Circuit Cost Function"
+      },
+      {
+        "args": {
+          "baseline": {
+            "name": "No compression",
+            "style": {
+              "color": "crimson",
+              "linestyle": "solid",
+              "linewidth": 2
+            },
+            "value": 1
+          },
+          "compression_features": {
+            "Depth": {
+              "color": "teal"
+            },
+            "Single-Qubit Gate Count": {
+              "color": "lightcoral"
+            },
+            "Single-Qubit Gate Depth": {
+              "color": "indigo"
+            },
+            "Total Gate Count": {
+              "color": "green"
+            },
+            "Two-Qubit Gate Count": {
+              "color": "magenta"
+            },
+            "Two-Qubit Gate Depth": {
+              "color": "darkred"
+            }
+          },
+          "input_stage": "target_analysis",
+          "output_stage": "mapping_compression",
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          }
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/{Pipeline Output Hardware Name}/compression_{input_stage}_to_{output_stage}.pdf",
+        "fixed_conditions": {},
+        "iterative_conditions": [
+          "Test Type",
+          "Pipeline Output Hardware Name",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_pipelines_compression_factor",
+        "title": "Compression Factor"
+      },
+      {
+        "args": {
+          "compression_features": {
+            "Depth": {
+              "color": "teal",
+              "name": "CF(Depth)"
+            },
+            "Single-Qubit Gate Count": {
+              "color": "lightcoral",
+              "name": "CF(1Q Gate Count)"
+            },
+            "Single-Qubit Gate Depth": {
+              "color": "palevioletred",
+              "name": "CF(1Q Gate Depth)"
+            },
+            "Total Gate Count": {
+              "color": "tomato",
+              "name": "CF(Total Gates)"
+            },
+            "Two-Qubit Gate Count": {
+              "color": "salmon",
+              "name": "CF(2Q Gate Count)"
+            },
+            "Two-Qubit Gate Depth": {
+              "color": "thistle",
+              "name": "CF(2Q Gate Depth)"
+            }
+          },
+          "input_stage": "target_analysis",
+          "output_stage": "mapping_compression",
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          }
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/{Pipeline Output Hardware Name}/comp_radar_{input_stage}_to_{output_stage}.pdf",
+        "fixed_conditions": {},
+        "iterative_conditions": [
+          "Test Type",
+          "Pipeline Output Hardware Name",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_compression_radar",
+        "title": ""
+      },
+      {
+        "args": {
+          "compression_features": {
+            "Circuit Cost Function": {
+              "color": "palevioletred",
+              "name": "Cost Improvement"
+            },
+            "Depth": {
+              "color": "teal",
+              "name": "CF(Depth)"
+            },
+            "Total Gate Count": {
+              "color": "tomato",
+              "name": "CF(Total Gates)"
+            },
+            "Two-Qubit Gate Count": {
+              "color": "salmon",
+              "name": "CF(2Q Gate Count)"
+            },
+            "Two-Qubit Gate Depth": {
+              "color": "thistle",
+              "name": "CF(2Q Gate Depth)"
+            }
+          },
+          "input_stage": "target_analysis",
+          "output_stage": "mapping_compression",
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          }
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/{Pipeline Output Hardware Name}/comp_radar_with_cost_{input_stage}_to_{output_stage}.pdf",
+        "fixed_conditions": {},
+        "iterative_conditions": [
+          "Test Type",
+          "Pipeline Output Hardware Name",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_compression_radar",
+        "title": ""
+      },
+      {
+        "args": {
+          "compression_feature": "Depth",
+          "input_stage": "target_analysis",
+          "output_stage": "mapping_compression",
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "row_label": "Hardware",
+          "rows_feature": "Pipeline Output Hardware Name"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/comp_heatmap_{compression_feature}_{input_stage}_to_{output_stage}.pdf",
+        "fixed_conditions": {},
+        "iterative_conditions": [
+          "Test Type",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_compression_heatmap",
+        "title": "CF({compression_feature})"
+      },
+      {
+        "args": {
+          "compression_feature": "Total Gate Count",
+          "input_stage": "target_analysis",
+          "output_stage": "mapping_compression",
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "row_label": "Hardware",
+          "rows_feature": "Pipeline Output Hardware Name"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/comp_heatmap_{compression_feature}_{input_stage}_to_{output_stage}.pdf",
+        "fixed_conditions": {},
+        "iterative_conditions": [
+          "Test Type",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_compression_heatmap",
+        "title": "CF({compression_feature})"
+      },
+      {
+        "args": {
+          "compression_feature": "Single-Qubit Gate Count",
+          "input_stage": "target_analysis",
+          "output_stage": "mapping_compression",
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "row_label": "Hardware",
+          "rows_feature": "Pipeline Output Hardware Name"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/comp_heatmap_{compression_feature}_{input_stage}_to_{output_stage}.pdf",
+        "fixed_conditions": {},
+        "iterative_conditions": [
+          "Test Type",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_compression_heatmap",
+        "title": "CF({compression_feature})"
+      },
+      {
+        "args": {
+          "compression_feature": "Two-Qubit Gate Count",
+          "input_stage": "target_analysis",
+          "output_stage": "mapping_compression",
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "row_label": "Hardware",
+          "rows_feature": "Pipeline Output Hardware Name"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/comp_heatmap_{compression_feature}_{input_stage}_to_{output_stage}.pdf",
+        "fixed_conditions": {},
+        "iterative_conditions": [
+          "Test Type",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_compression_heatmap",
+        "title": "CF({compression_feature})"
+      },
+      {
+        "args": {
+          "compression_feature": "Single-Qubit Gate Depth",
+          "input_stage": "target_analysis",
+          "output_stage": "mapping_compression",
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "row_label": "Hardware",
+          "rows_feature": "Pipeline Output Hardware Name"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/comp_heatmap_{compression_feature}_{input_stage}_to_{output_stage}.pdf",
+        "fixed_conditions": {},
+        "iterative_conditions": [
+          "Test Type",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_compression_heatmap",
+        "title": "CF({compression_feature})"
+      },
+      {
+        "args": {
+          "compression_feature": "Two-Qubit Gate Depth",
+          "input_stage": "target_analysis",
+          "output_stage": "mapping_compression",
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "row_label": "Hardware",
+          "rows_feature": "Pipeline Output Hardware Name"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/comp_heatmap_{compression_feature}_{input_stage}_to_{output_stage}.pdf",
+        "fixed_conditions": {},
+        "iterative_conditions": [
+          "Test Type",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_compression_heatmap",
+        "title": "CF({compression_feature})"
+      },
+      {
+        "args": {
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "stages_settings": {
+            "mapping_compression": {
+              "color": "teal",
+              "name": "Mapping+Compression"
+            },
+            "unroll": {
+              "color": "turquoise",
+              "name": "Unroll"
+            }
+          },
+          "y_col": "Execution Time",
+          "yscale": "log"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/{Pipeline Output Hardware Name}/bars_Execution Time.pdf",
+        "fixed_conditions": {},
+        "iterative_conditions": [
+          "Test Type",
+          "Pipeline Output Hardware Name",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_pipelines_comparison_bars",
+        "title": "Execution Time"
+      },
+      {
+        "args": {
+          "input_stage": "target_analysis",
+          "output_stage": "mapping_compression",
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "x_col": "Total Gate Count",
+          "y_col": "Total Execution Time"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/{Pipeline Output Hardware Name}/scatter_{y_col}_vs_{x_col}.pdf",
+        "fixed_conditions": {},
+        "iterative_conditions": [
+          "Test Type",
+          "Pipeline Output Hardware Name",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_scatter",
+        "title": "{y_col} vs {x_col}"
+      },
+      {
+        "args": {
+          "input_stage": "target_analysis",
+          "output_stage": "mapping_compression",
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "x_col": "Single-Qubit Gate Count",
+          "y_col": "Two-Qubit Gate Count"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/{Pipeline Output Hardware Name}/scatter_{y_col}_vs_{x_col}.pdf",
+        "fixed_conditions": {},
+        "iterative_conditions": [
+          "Test Type",
+          "Pipeline Output Hardware Name",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_scatter",
+        "title": "{y_col} vs {x_col}"
+      },
+      {
+        "args": {
+          "input_stage": "target_analysis",
+          "output_stage": "mapping_compression",
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "x_col": "Depth",
+          "y_col": "Two-Qubit Gate Count"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/{Pipeline Output Hardware Name}/scatter_{y_col}_vs_{x_col}.pdf",
+        "fixed_conditions": {},
+        "iterative_conditions": [
+          "Test Type",
+          "Pipeline Output Hardware Name",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_scatter",
+        "title": "{y_col} vs {x_col}"
+      },
+      {
+        "args": {
+          "input_stage": "target_analysis",
+          "output_stage": "mapping_compression",
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "x_col": "Depth",
+          "y_col": "Total Gate Count"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/{Pipeline Output Hardware Name}/scatter_{y_col}_vs_{x_col}.pdf",
+        "fixed_conditions": {},
+        "iterative_conditions": [
+          "Test Type",
+          "Pipeline Output Hardware Name",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_scatter",
+        "title": "{y_col} vs {x_col}"
+      },
+      {
+        "args": {
+          "input_stage": "target_analysis",
+          "output_stage": "mapping_compression",
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "x_col": "Single-Qubit Gate Count",
+          "y_col": "Single-Qubit Gate Depth"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/{Pipeline Output Hardware Name}/scatter_{y_col}_vs_{x_col}.pdf",
+        "fixed_conditions": {},
+        "iterative_conditions": [
+          "Test Type",
+          "Pipeline Output Hardware Name",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_scatter",
+        "title": "{y_col} vs {x_col}"
+      },
+      {
+        "args": {
+          "input_stage": "target_analysis",
+          "output_stage": "mapping_compression",
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "x_col": "Two-Qubit Gate Count",
+          "y_col": "Two-Qubit Gate Depth"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/{Pipeline Output Hardware Name}/scatter_{y_col}_vs_{x_col}.pdf",
+        "fixed_conditions": {},
+        "iterative_conditions": [
+          "Test Type",
+          "Pipeline Output Hardware Name",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_scatter",
+        "title": "{y_col} vs {x_col}"
+      },
+      {
+        "args": {
+          "compression_feature": "Depth",
+          "input_stage": "target_analysis",
+          "output_stage": "mapping_compression",
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "row_label": "Target",
+          "rows_feature": "Test Target ID"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/{Pipeline Output Hardware Name}/comp_heatmap_{compression_feature}_{input_stage}_to_{output_stage}.pdf",
+        "fixed_conditions": {},
+        "iterative_conditions": [
+          "Test Type",
+          "Pipeline Output Hardware Name",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_compression_heatmap",
+        "title": "CF({compression_feature})"
+      },
+      {
+        "args": {
+          "compression_feature": "Total Gate Count",
+          "input_stage": "target_analysis",
+          "output_stage": "mapping_compression",
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "row_label": "Target",
+          "rows_feature": "Test Target ID"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/{Pipeline Output Hardware Name}/comp_heatmap_{compression_feature}_{input_stage}_to_{output_stage}.pdf",
+        "fixed_conditions": {},
+        "iterative_conditions": [
+          "Test Type",
+          "Pipeline Output Hardware Name",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_compression_heatmap",
+        "title": "CF({compression_feature})"
+      },
+      {
+        "args": {
+          "compression_feature": "Single-Qubit Gate Count",
+          "input_stage": "target_analysis",
+          "output_stage": "mapping_compression",
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "row_label": "Target",
+          "rows_feature": "Test Target ID"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/{Pipeline Output Hardware Name}/comp_heatmap_{compression_feature}_{input_stage}_to_{output_stage}.pdf",
+        "fixed_conditions": {},
+        "iterative_conditions": [
+          "Test Type",
+          "Pipeline Output Hardware Name",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_compression_heatmap",
+        "title": "CF({compression_feature})"
+      },
+      {
+        "args": {
+          "compression_feature": "Two-Qubit Gate Count",
+          "input_stage": "target_analysis",
+          "output_stage": "mapping_compression",
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "row_label": "Target",
+          "rows_feature": "Test Target ID"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/{Pipeline Output Hardware Name}/comp_heatmap_{compression_feature}_{input_stage}_to_{output_stage}.pdf",
+        "fixed_conditions": {},
+        "iterative_conditions": [
+          "Test Type",
+          "Pipeline Output Hardware Name",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_compression_heatmap",
+        "title": "CF({compression_feature})"
+      },
+      {
+        "args": {
+          "compression_feature": "Single-Qubit Gate Depth",
+          "input_stage": "target_analysis",
+          "output_stage": "mapping_compression",
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "row_label": "Target",
+          "rows_feature": "Test Target ID"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/{Pipeline Output Hardware Name}/comp_heatmap_{compression_feature}_{input_stage}_to_{output_stage}.pdf",
+        "fixed_conditions": {},
+        "iterative_conditions": [
+          "Test Type",
+          "Pipeline Output Hardware Name",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_compression_heatmap",
+        "title": "CF({compression_feature})"
+      },
+      {
+        "args": {
+          "compression_feature": "Two-Qubit Gate Depth",
+          "input_stage": "target_analysis",
+          "output_stage": "mapping_compression",
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          },
+          "row_label": "Target",
+          "rows_feature": "Test Target ID"
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/{Pipeline Output Hardware Name}/comp_heatmap_{compression_feature}_{input_stage}_to_{output_stage}.pdf",
+        "fixed_conditions": {},
+        "iterative_conditions": [
+          "Test Type",
+          "Pipeline Output Hardware Name",
+          "Test Target Generator Name"
+        ],
+        "plot_function": "plot_compression_heatmap",
+        "title": "CF({compression_feature})"
+      },
+      {
+        "args": {
+          "stages_settings": {
+            "mapping_compression": {
+              "color": "teal",
+              "name": "Mapping+Compression"
+            },
+            "target_analysis": {
+              "color": "crimson",
+              "name": "Target"
+            },
+            "unroll": {
+              "color": "turquoise",
+              "name": "Unroll"
+            }
+          }
+        },
+        "filename": "{Test Type}/{Test Target Generator Name}/{Pipeline Output Hardware Name}/gate_composition_heatmap_{Pipeline ID}.pdf",
+        "fixed_conditions": {},
+        "iterative_conditions": [
+          "Test Type",
+          "Test Target Generator Name",
+          "Pipeline ID",
+          "Pipeline Output Hardware Name"
+        ],
+        "plot_function": "plot_gate_composition",
+        "title": "{Pipeline ID}"
+      },
+      {
+        "args": {
+          "compression_features": {
+            "Depth": {
+              "color": "teal",
+              "name": "CF(Depth)"
+            },
+            "Single-Qubit Gate Count": {
+              "color": "lightcoral",
+              "name": "CF(1Q Gate Count)"
+            },
+            "Single-Qubit Gate Depth": {
+              "color": "palevioletred",
+              "name": "CF(1Q Gate Depth)"
+            },
+            "Total Gate Count": {
+              "color": "tomato",
+              "name": "CF(Total Gates)"
+            },
+            "Two-Qubit Gate Count": {
+              "color": "salmon",
+              "name": "CF(2Q Gate Count)"
+            },
+            "Two-Qubit Gate Depth": {
+              "color": "thistle",
+              "name": "CF(2Q Gate Depth)"
+            }
+          },
+          "input_stage": "target_analysis",
+          "output_stage": "mapping_compression",
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          }
+        },
+        "filename": "{Test Type}/comp_radar_{input_stage}_to_{output_stage}_grid.pdf",
+        "fixed_conditions": {},
+        "iterative_conditions": [
+          "Test Type"
+        ],
+        "plot_function": "plot_compression_radar_grid",
+        "title": ""
+      },
+      {
+        "args": {
+          "compression_features": {
+            "Circuit Cost Function": {
+              "color": "palevioletred",
+              "name": "Cost Improvement"
+            },
+            "Depth": {
+              "color": "teal",
+              "name": "CF(Depth)"
+            },
+            "Total Gate Count": {
+              "color": "tomato",
+              "name": "CF(Total Gates)"
+            },
+            "Two-Qubit Gate Count": {
+              "color": "salmon",
+              "name": "CF(2Q Gate Count)"
+            },
+            "Two-Qubit Gate Depth": {
+              "color": "thistle",
+              "name": "CF(2Q Gate Depth)"
+            }
+          },
+          "input_stage": "target_analysis",
+          "output_stage": "mapping_compression",
+          "pipelines_settings": {
+            "CirqPl": {
+              "color": "indianred",
+              "name": "CirqPl"
+            },
+            "QiskitPl": {
+              "color": "mediumturquoise",
+              "name": "QiskitPl"
+            }
+          }
+        },
+        "filename": "{Test Type}/comp_radar_with_cost_{input_stage}_to_{output_stage}_grid.pdf",
+        "fixed_conditions": {},
+        "iterative_conditions": [
+          "Test Type"
+        ],
+        "plot_function": "plot_compression_radar_grid",
+        "title": ""
+      },
+      {
+        "args": {
+          "hardware_list": [
+            {
+              "args": {
+                "num_qubits": 2
+              },
+              "class": "IbmAll2All"
+            },
+            {
+              "args": {
+                "num_qubits": 16
+              },
+              "class": "IbmAll2All"
+            },
+            {
+              "args": {},
+              "class": "IbmRueschlikonSymmetrical"
+            }
+          ]
+        },
+        "filename": "coupling_map_{Pipeline Output Hardware Name}.pdf",
+        "fixed_conditions": {},
+        "iterative_conditions": [
+          "Pipeline Output Hardware Name"
+        ],
+        "plot_function": "plot_connectivity_map",
+        "title": ""
+      }
+    ]
+  }
+}
