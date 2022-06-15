@@ -786,7 +786,7 @@ class LatexReport:
         with self.doc.create(Section("System Info")):
             with self.doc.create(Itemize()) as itemize:
                 itemize.add_item(f"Platform: {platform.platform(aliased=1)}")
-                itemize.add_item(f"Processor: {cpuinfo.get_cpu_info()['brand_raw']}")
+                itemize.add_item(f"Processor: {cpuinfo.get_cpu_info()['brand']}")
                 memory = virtual_memory().total / 2 ** 30
                 itemize.add_item(f"Memory: {round(memory, 1)} Gb")
 

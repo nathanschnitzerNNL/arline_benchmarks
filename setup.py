@@ -48,7 +48,8 @@ setuptools.setup(
         # old qiskit version to support pytket-qiskit
         # "qiskit~=0.18.0",
         "arline-quantum~=0.1.8",
-        "jkq.qcec==1.5"
+        "jkq.qcec",
+        "importlib_metadata",
     ],
     classifiers=[
         "Programming Language :: Python :: 3",

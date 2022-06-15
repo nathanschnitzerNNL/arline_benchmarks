@@ -21,7 +21,7 @@ from arline_quantum.gates import __gates_by_names__
 from arline_quantum.utils.fidelity import meas_fidelity, matrix_to_psi
 from arline_quantum.estimators import Estimator
 
-from jkq import qcec
+from mqt import qcec
 
 DEBUG = 0
 
